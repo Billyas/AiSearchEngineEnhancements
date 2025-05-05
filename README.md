@@ -1,5 +1,7 @@
 # AI搜索引擎增强脚本
 
+[![Release](https://img.shields.io/badge/Release-v20250507-brightgreen.svg)](https://greasyfork.org/zh-CN/scripts/534977-ai%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%A2%9E%E5%BC%BA)
+
 ## 功能特性
 
 ### 支持的搜索引擎
