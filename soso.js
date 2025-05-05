@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name              AI搜索引擎增强😈
 // @name:zh           AI搜索引擎增强😈
-// @name:zh-TW		  AI搜索引擎增強😈
+// @name:zh-TW        AI搜索引擎增強😈
 // @namespace         ai_search_engine_enhancements
-// @version           2025-5-4
+// @version           2025-05-05
 // @description       AI搜索引擎功能增强,元宝AI搜索全自动跳转，kimi搜索跳转，百度添加网址显示，google结果新标签页打开灯,导航可自定义网址【脚本长期维护更新，完全免费，无广告，仅限学习交流！！】
 // @description:zh    AI搜索引擎功能增强,元宝AI搜索全自动跳转，kimi搜索跳转，百度添加网址显示，google结果新标签页打开灯,导航可自定义网址【脚本长期维护更新，完全免费，无广告，仅限学习交流！！】
 // @description:zh-TW AI搜索引擎功能增強,元寶AI搜索全自動跳轉，kimi搜索跳轉，百度添加網址顯示，google結果新標籤頁打開燈,導航可自定義網址【腳本長期維護更新，完全免費，無廣告，僅限學習交流！！】
@@ -615,7 +615,14 @@
         this.defaultNavigationData = [
             {
                 "name": "资源搜索", "list": [
-
+                    {
+                        "name": "Google",
+                        "url": "https://www.google.com/search?q=@@"
+                    },
+                    {
+                        "name": "DuckDuckGo",
+                        "url": "https://duckduckgo.com/?t=h_&q=@@&ia=web"
+                    },
                     {
                         "name": "百度",
                         "url": "https://www.baidu.com/s?wd=@@"
