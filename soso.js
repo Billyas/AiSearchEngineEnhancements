@@ -3,7 +3,7 @@
 // @name:zh           AI搜索引擎增强😈
 // @name:zh-TW        AI搜索引擎增強😈
 // @namespace         ai_search_engine_enhancements
-// @version           2025-05-05
+// @version           2025-05-07
 // @description       AI搜索引擎功能增强,元宝AI搜索全自动跳转，kimi搜索跳转，百度添加网址显示，google结果新标签页打开灯,导航可自定义网址【脚本长期维护更新，完全免费，无广告，仅限学习交流！！】
 // @description:zh    AI搜索引擎功能增强,元宝AI搜索全自动跳转，kimi搜索跳转，百度添加网址显示，google结果新标签页打开灯,导航可自定义网址【脚本长期维护更新，完全免费，无广告，仅限学习交流！！】
 // @description:zh-TW AI搜索引擎功能增強,元寶AI搜索全自動跳轉，kimi搜索跳轉，百度添加網址顯示，google結果新標籤頁打開燈,導航可自定義網址【腳本長期維護更新，完全免費，無廣告，僅限學習交流！！】
@@ -44,6 +44,8 @@
 // @license           AGPL License
 // @charset		        UTF-8
 // @run-at            document-idle
+// @downloadURL https://update.greasyfork.org/scripts/534977/AI%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%A2%9E%E5%BC%BA%F0%9F%98%88.user.js
+// @updateURL https://update.greasyfork.org/scripts/534977/AI%E6%90%9C%E7%B4%A2%E5%BC%95%E6%93%8E%E5%A2%9E%E5%BC%BA%F0%9F%98%88.meta.js
 // ==/UserScript==
 (function () {
     'use strict';
@@ -148,70 +150,45 @@
         this.addCommonHtmlCss = function () {
             var cssText =
                 `
-			@keyframes fadeIn {
-				0%    {opacity: 0}
-				100%  {opacity: 1}
-			}
-			@-webkit-keyframes fadeIn {
-				0%    {opacity: 0}
-				100%  {opacity: 1}
-			}
-			@-moz-keyframes fadeIn {
-				0%    {opacity: 0}
-				100%  {opacity: 1}
-			}
-			@-o-keyframes fadeIn {
-				0%    {opacity: 0}
-				100%  {opacity: 1}
-			}
-			@-ms-keyframes fadeIn {
-				0%    {opacity: 0}
-				100%  {opacity: 1}
-			}
-			@keyframes fadeOut {
-				0%    {opacity: 1}
-				100%  {opacity: 0}
-			}
-			@-webkit-keyframes fadeOut {
-				0%    {opacity: 1}
-				100%  {opacity: 0}
-			}
-			@-moz-keyframes fadeOut {
-				0%    {opacity: 1}
-				100%  {opacity: 0}
-			}
-			@-o-keyframes fadeOut {
-				0%    {opacity: 1}
-				100%  {opacity: 0}
-			}
-			@-ms-keyframes fadeOut {
-				0%    {opacity: 1}
-				100%  {opacity: 0}
-			}
-			.web-toast-kkli9{
-				position: fixed;
-				background: rgba(0, 0, 0, 0.7);
-				color: #fff;
-				font-size: 14px;
-				line-height: 1;
-				padding:10px;
-				border-radius: 3px;
-				left: 50%;
-				transform: translateX(-50%);
-				-webkit-transform: translateX(-50%);
-				-moz-transform: translateX(-50%);
-				-o-transform: translateX(-50%);
-				-ms-transform: translateX(-50%);
-				z-index: 999999999999999999999999999;
-				white-space: nowrap;
-			}
-			.fadeOut{
-				animation: fadeOut .5s;
-			}
-			.fadeIn{
-				animation:fadeIn .5s;
-			}
-			`;
+                a[name='navigation'] {
+                    transition: all 0.3s ease;
+                    border: none;
+                    border-radius: 4px;
+                    padding: 1px 6px;
+                    color: #666666;
+                    text-decoration: none !important;
+                    text-decoration-line: none !important;
+                }
+                a[name='navigation']:hover {
+                    background: rgba(49, 94, 251, 0.1);
+                    color: #315EFB;
+                    text-decoration: none !important;
+                    text-decoration-line: none !important;
+                }
+                .web-toast-kkli9{
+                    position: fixed;
+                    background: rgba(0, 0, 0, 0.7);
+                    color: #fff;
+                    font-size: 14px;
+                    line-height: 1;
+                    padding:10px;
+                    border-radius: 3px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    -webkit-transform: translateX(-50%);
+                    -moz-transform: translateX(-50%);
+                    -o-transform: translateX(-50%);
+                    -ms-transform: translateX(-50%);
+                    z-index: 999999999999999999999999999;
+                    white-space: nowrap;
+                }
+                .fadeOut{
+                    animation: fadeOut .5s;
+                }
+                .fadeIn{
+                    animation:fadeIn .5s;
+                }
+                `;
             this.GMaddStyle(cssText);
         };
         this.webToast = function (params) {	//小提示框
@@ -786,7 +763,7 @@
 				display:inline-block;
 				text-align:center;
 				margin-right:12px;
-				margin-top:5px;
+				margin-top:2px;
 				overflow: hidden;
 				white-space: nowrap;
 				text-overflow:ellipsis;
@@ -794,10 +771,11 @@
 				line-height:20px;
 				font-size:14px!important;
 				text-decoration: none;
-				color:#1a0dab;
+				color: #666666;
 			}
 			.tab-c-links`+ elementNum + ` a[name='navigation']:hover{
 				text-decoration: underline;
+				color: #315EFB;
 			}
 
 			.bookmarks`+ elementNum + `{
@@ -972,7 +950,7 @@
 								<div class="tab-c-links`+ elementNum + `">` + linkArray.join("") + `</div>
 							</div>
 							<div style='margin-bottom:10px;margin-top:5px;font-size:12px;'>
-								<a href="javascript:void(0);" name="customNavigation" style="color: #000;background-color: #efefef;padding: 2px 5px; border-radius: 2px;">🔧自定义网址</a>
+								<a href="javascript:void(0);" name="customNavigation" style="color: #666;background-color: #efefef;padding: 2px 5px; border-radius: 2px;">🔧自定义网址</a>
 							</div>
 						<div>
 					`;
@@ -1033,7 +1011,7 @@
                     continue;
                 }
 
-                //https://www.baidu.com/s?wd=一夜醒来欠地铁600多万?官方回应
+                //https://www.baidu.com/s?wd=一夜醒来欠地铁600 много钱?官方回应
                 if (a.href.includes("www.baidu.com/link?url=")) {
                     let url = item.getAttribute("mu");
                     if (url && url.indexOf("http") != -1 && !url.includes("nourl.ubs.baidu.com")) {
@@ -1236,7 +1214,7 @@
         console.log("给元宝添加q查询参数：error：" + e);
     }
 
-    /* 
+    /*
      * 给DeepSeek添加q查询参数
     */
     async function addDeepSeekQueryParam() {
@@ -1285,7 +1263,7 @@
         });
     }
 
-    
+
     try {
         //如果匹配到deepseek.com，就执行addDeepSeekQueryParam函数
         if (window.location.host === 'chat.deepseek.com') {
